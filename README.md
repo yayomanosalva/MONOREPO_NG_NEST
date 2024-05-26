@@ -48,7 +48,7 @@ Para comunicar el cliente (**Angular**) con el servidor (**Nest.js**) a través 
      ```json
      {
        "/api": {
-         "target": "http://localhost:3000", // Cambia esto a la URL de tu servidor Nest.js
+         "target": "http://localhost:3000",
          "secure": false
        }
      }
