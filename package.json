@@ -1,0 +1,27 @@
+{
+  "name": "monorepo_angular_nest",
+  "version": "1.0.0",
+  "description": "monorepo para angular y nestjs",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo run build",
+    "start": "node apps/api/dist/main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yayomanosalva/monorepo_angular_nest.git"
+  },
+  "author": "Jair Manosalva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yayomanosalva/monorepo_angular_nest/issues"
+  },
+  "homepage": "https://github.com/yayomanosalva/monorepo_angular_nest#readme",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.13.3"
+  }
+}
