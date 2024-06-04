@@ -1,0 +1,6 @@
+// tsconfig.eslint.json
+{
+     "include": [
+          "./**/.eslintrc.js"
+     ]
+}
