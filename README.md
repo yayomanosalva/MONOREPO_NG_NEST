@@ -125,22 +125,21 @@ Para comunicar el cliente (**Angular**) con el servidor (**Nest.js**) a través 
    ````
 
 2. **crea archivo .env**:
-  - se crea un archivo .env, se instala el paquete dotenv & @nestjs/config y se configura en el módulo
 
-    ```bash
-      npm install dotenv
-      npm i --save @nestjs/config
-    ```
+- se crea un archivo .env, se instala el paquete dotenv & @nestjs/config y se configura en el módulo
 
-    ```txt
-      DB_NAME=nestdb
-      DB_USER=nestdb
-      DB_PASSWORD=secret1234
-      DB_HOST=localhost
-      DB_PORT=5432
-     ```
+  ```bash
+    npm install dotenv
+    npm i --save @nestjs/config
+  ```
 
-    
+  ```txt
+    DB_NAME=nestdb
+    DB_USER=nestdb
+    DB_PASSWORD=secret1234
+    DB_HOST=localhost
+    DB_PORT=5432
+  ```
 
 3. **Levantar docker**:
 
@@ -164,64 +163,69 @@ Para comunicar el cliente (**Angular**) con el servidor (**Nest.js**) a través 
 
 ## Instalar TypeOrm
 
-  ```bash
-    npm install --save @nestjs/typeorm typeorm pg
-  ```
+```bash
+  npm install --save @nestjs/typeorm typeorm pg
+```
 
-  ```typescript
-    import { TypeOrmModule } from '@nestjs/typeorm';
-    import { ServeStaticModule } from '@nestjs/serve-static';
-    import { join } from 'path';
-    import { ProductsModule } from './modules/products/products.module';
-    import { ConfigModule } from '@nestjs/config';
+```typescript
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
+import { ProductsModule } from "./modules/products/products.module";
+import { ConfigModule } from "@nestjs/config";
 
-    @Module({
-      imports: [
-        ConfigModule.forRoot(),
-        TypeOrmModule.forRoot({
-          type: 'postgres',
-          host: process.env.DB_HOST, // Utiliza las variables de entorno
-          port: parseInt(process.env.DB_PORT, 10),
-          username: process.env.DB_USER,
-          password: process.env.DB_PASSWORD,
-          database: process.env.DB_NAME,
-          entities: [__dirname + '/**/*.entity{.ts,.js}'],
-          synchronize: true,
-        }),
-        ServeStaticModule.forRoot({
-          rootPath: join(__dirname, '../../client/dist'),
-        }),
-        ProductsModule,
-      ],
-      controllers: [],
-      providers: [],
-    })
-    export class AppModule {}
-  ```
-     
+@Module({
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: "postgres",
+      host: process.env.DB_HOST, // Utiliza las variables de entorno
+      port: parseInt(process.env.DB_PORT, 10),
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: [__dirname + "/**/*.entity{.ts,.js}"],
+      synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "../../client/dist"),
+    }),
+    ProductsModule,
+  ],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}
+```
+
 ## Verificación
 
 Iniciamos la aplicación Angular y verificamos que las solicitudes se redirijan correctamente al servidor Nest.js a través del proxy.
 
 ## creando el Módulo
 
-  ```bash
-  nest g mo modules/products
-  nest g class modules/products/product
-  nest g co modules/products
-  nest g s modules/products
-  ```
+```bash
+nest g mo modules/products
+nest g class modules/products/product
+nest g co modules/products
+nest g s modules/products
+```
 
-  o
+o
 
-  ```bash
-  nest generate resource modules/products
-  ```
+```bash
+nest generate resource modules/products
+```
 
 - resumen
 
   ```bash
   nest g co mod mo s modules/products
+  ```
+
+  ```bash
+  nest generate resource modules/auth
+  npm i @nestjs/jwt @nestjs/passport passport passport-jwt passport-local
   ```
 
 ## Contribución
