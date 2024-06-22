@@ -90,7 +90,7 @@ Para comunicar el cliente (**Angular**) con el servidor (**Nest.js**) a través 
        constructor(private http: HttpClient) {}
 
        fetchData() {
-         return this.http.get("/api/data"); // Esto se redirigirá al servidor Nest.js
+         return this.http.get("/api/v1"); // Esto se redirigirá al servidor Nest.js
        }
      }
      ```
