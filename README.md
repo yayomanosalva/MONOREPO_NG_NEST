@@ -51,7 +51,7 @@ Para comunicar el cliente (**Angular**) con el servidor (**Nest.js**) a través 
    - Ejemplo de contenido en `proxy.conf.json`:
      ```json
      {
-       "/api": {
+       "/api/v1": {
          "target": "http://localhost:3000",
          "secure": false
        }

@@ -3,11 +3,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
-  OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { Brand } from './brands.entity';
 import { Category } from './category.entity';
 import { Image } from './image.entity';
+import { User } from '@/modules/users/entities/user.entity';
 
 @Entity({ name: 'products' })
 export class Product {
@@ -62,6 +63,13 @@ export class Product {
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
 
-  @OneToMany(() => Image, (image) => image.product)
+  @ManyToOne(() => Image, (image) => image.product)
   images: Image[];
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'userEmail', referencedColumnName: 'email' })
+  user: User;
+
+  @Column()
+  userEmail: string;
 }

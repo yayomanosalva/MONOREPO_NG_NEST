@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
-import { Role } from 'src/common/enums/rol.enum';
+import { Role } from '@/common/enums/rol.enum';
 import { AuthService } from './auth.service';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
@@ -32,7 +32,7 @@ export class AuthController {
   @Get('profile')
   @Auth([Role.ADMIN, Role.USER])
   profile(@ActiveUser() user: UserActiveInterface) {
-    console.log(user);
+    // console.log(user);
     return this.authService.profile(user);
   }
 }

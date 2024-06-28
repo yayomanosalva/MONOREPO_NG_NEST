@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo run build",
-    "start": "node apps/api/dist/main",
+    "start": "node apps/api/@/main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

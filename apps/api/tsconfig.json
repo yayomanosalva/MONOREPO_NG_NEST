@@ -16,7 +16,18 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@Helper/*": [
+        "src/common/helper/*"
+      ]
+    }
   },
-  "include": ["src", "dist/modules/products/products.module.d.ts"]
+  "include": [
+    "src",
+    "dist/modules/products/products.module.d.ts"
+  ]
 }

@@ -18,13 +18,18 @@ export class RolesGuard implements CanActivate {
     }
 
     const { user } = context.switchToHttp().getRequest();
+    // console.log('>>> ', user);
     const userRoles = user?.role;
 
     if (!userRoles) {
       return false; // No hay roles definidos, denegar acceso
     }
 
+    if (user.role === Role.ADMIN) return true;
+
     // Verificar si el usuario tiene al menos uno de los roles requeridos
+    // console.log('requiredRoles ', requiredRoles);
+    // console.log('userRoles ', userRoles);
     return requiredRoles.some((role) => userRoles.includes(role));
   }
 }

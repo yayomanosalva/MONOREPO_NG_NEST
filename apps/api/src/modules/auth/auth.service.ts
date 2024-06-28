@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   async login({ email, password }: LoginDto) {
-    const user = await this.usersService.findOneByEmailWithPassword(email);
+    const user = await this.usersService.findByEmailWithPassword(email);
 
     if (!user) {
       throw new UnauthorizedException('Invalid email');
@@ -60,7 +60,7 @@ export class AuthService {
     };
   }
 
-  async profile({ email, role }: { email: string; role: string }) {
+  async profile({ email }: { email: string; role: string }) {
     return await this.usersService.findOneByEmail(email);
   }
 }

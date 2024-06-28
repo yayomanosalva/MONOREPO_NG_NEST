@@ -3,10 +3,11 @@ import {
   IsNumber,
   IsString,
   IsBoolean,
-  IsArray,
+  // IsArray,
   ValidateNested,
 } from 'class-validator';
 import { ImageDTO } from './Image.dto';
+import { Type } from 'class-transformer';
 
 export class CreateProductDTO {
   @IsNotEmpty()
@@ -56,7 +57,11 @@ export class CreateProductDTO {
   @IsNumber()
   categoryId: number;
 
-  @IsArray()
+  // @IsArray()
   @ValidateNested({ each: true })
+  @Type(() => ImageDTO)
   images: ImageDTO[];
+
+  @IsString()
+  userEmail: string;
 }
